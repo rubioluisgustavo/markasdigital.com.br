@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $title = ($_POST['title']);
     $titleBlock1 = ($_POST['titleBlock1']);
     $contentBlock1 = ($_POST['contentBlock1']);
     $titleBlock2 = ($_POST['titleBlock2']);
@@ -11,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $data = [
-        'title' =>   $title,
         'titleBlock1' =>  $titleBlock1,
         'contentBlock1' => $contentBlock1,
         'titleBlock2' =>  $titleBlock2,

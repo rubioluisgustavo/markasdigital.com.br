@@ -19,8 +19,6 @@ $data = json_decode(file_get_contents($jsonFile), true);
 <body>
     <form action="../modules/propositoModule.php" method="post" enctype="multipart/form-data">
         <h1>Propósito</h1>
-        <label for="title">Título Principal:</label>
-        <input type="text" value="<?php echo $data['title']; ?>" name="title" id="title"><br><br>
 
         <label for="content">Quadrado 1 - título:</label>
         <textarea name="titleBlock1" id="content" rows="4" cols="50"><?php echo $data['titleBlock1']; ?></textarea><br><br>

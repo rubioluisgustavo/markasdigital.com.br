@@ -30,14 +30,6 @@ if (file_exists($jsonFile)) {
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <?php echo ($data['content2']) ?>
-                    </div>
-                    <div class="col-md-6 text-center">
-                    </div>
-                </div>
-
             </div>
         </section>
 

@@ -18,8 +18,6 @@ $data = json_decode(file_get_contents($jsonFile), true);
 <body>
     <form action="../modules/indexModule.php" method="post" enctype="multipart/form-data">
         <h1>Home</h1>
-        <label for="title">Título:</label>
-        <input type="text" value="<?php echo $data['title']; ?>" name="title" id="title"><br><br>
 
         <label for="content">Conteúdo:</label>
         <textarea name="content" id="content" rows="20" cols="50"><?php echo $data['content']; ?></textarea><br><br>

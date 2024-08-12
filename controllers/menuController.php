@@ -18,8 +18,6 @@ $data = json_decode(file_get_contents($jsonFile), true);
 <body>
     <form action="../modules/menuModule.php" method="post" enctype="multipart/form-data">
         <h1>menus</h1>
-        <label for="title">Título:</label>
-        <input type="text" value="" name="title" id="title"><br><br>
 
         <label for="link">Link:</label>
         <input type="text" value="" name="href" id="title"><br><br>

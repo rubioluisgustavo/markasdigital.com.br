@@ -14,11 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         die('Nenhuma imagem foi enviada.');
     }
-    $title = ($_POST['title']);
     $content = ($_POST['content']);
     $imageName = basename($_FILES['image']['name']);
     $data = [
-        'title' => $title,
         'content' => $content,
         'image' => $imageName
     ];
