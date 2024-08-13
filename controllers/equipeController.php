@@ -17,7 +17,7 @@ $data = json_decode(file_get_contents($jsonFile), true);
 
 <body>
     <form action="../modules/equipeModule.php" method="post" enctype="multipart/form-data">
-        <h1>equipe</h1>
+        <h1>Adicionar membro</h1>
         <label for="title">Nome:</label>
         <input type="text" value="" name="name" id="title"><br><br>
 
