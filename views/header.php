@@ -1,13 +1,8 @@
 <?php
-$contentsLang = file_get_contents("./data/languages.json");
-$contentsLang = json_decode($contentsLang);
-
-session_start();
-
-$lang = 'pt';
 
 $jsonFile = './data/menuData.json';
 $data = json_decode(file_get_contents($jsonFile), true);
+
 
 ?>
 

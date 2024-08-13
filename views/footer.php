@@ -1,6 +1,9 @@
 <?php
 $jsonFile = './data/menuData.json';
 $data = json_decode(file_get_contents($jsonFile), true);
+
+$jsonFile2 = './data/contatoData.json';
+$data2 = json_decode(file_get_contents($jsonFile2), true); 
 ?>
 <footer id="footer">
     <div class="footer-top">
@@ -21,19 +24,19 @@ $data = json_decode(file_get_contents($jsonFile), true);
 
                 <div class="col-lg-4 col-md-4 footer-contact">
                     <p>
-                        <?php echo ($contentsLang->$lang->faleConosco) ?> <br>
-                        <strong><?php echo ($contentsLang->$lang->telefone) ?>:</strong><a href="https://api.whatsapp.com/send?phone=+5515996994538&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Markas%20Digital!">
-                            +55 (15) 99699-4538
+                        <?php echo "CONTATO" ?> <br>
+                        <strong><?php echo "whatsapp" ?>:</strong><a href="https://api.whatsapp.com/send?phone=<?php echo ($data2['phone']); ?>&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Markas%20Digital!">
+                            <?php echo ($data2['phone']); ?>
                         </a> <br>
 
 
-                        <strong>E-mail: </strong><a href="mailto:comercial@markasdigital.com.br">comercial@markasdigital.com.br</a><br>
+                        <strong>E-mail: </strong><a href="mailto:<?php echo ($data2['email']); ?>"><?php echo ($data2['email']); ?></a><br>
                     </p>
 
                     <div class="social-links">
                         <a href="https://www.instagram.com/markas.digital/" class="instagram"><i class="bi bi-instagram"></i></a>
                         <a href="https://www.linkedin.com/company/markasdigital/?viewAsMember=true" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://api.whatsapp.com/send?phone=+5515996994538&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Markas%20Digital!" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=<?php echo ($data2['phone']); ?>&text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20as%20soluções%20da%20Markas%20Digital!" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                     </div>
 
                 </div>
@@ -41,7 +44,7 @@ $data = json_decode(file_get_contents($jsonFile), true);
             </div>
         </div>
         <div class="footer-rights text-center">
-            <?php echo "©" . date('Y') . " MARKAS DIGITAL - " . ($contentsLang->$lang->rights); ?> -<a href="https://markasdigital.com.br"><strong> Markas Digital</strong></a>
+            <?php echo "©" . date('Y') . " MARKAS DIGITAL" ?>
         </div>
     </div>
 </footer>
