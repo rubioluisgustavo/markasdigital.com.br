@@ -1,29 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(240, 240, 240, 1) 90%, rgba(0, 212, 255, 1) 100%);
+    background-image: linear-gradient(985deg, #011639, rgb(5, 99, 5));
+    background-size: 500% 500%;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: degrade-animado 5s infinite alternate;
+}
+
+@keyframes degrade-animado {
+    0% {
+        background-position-x: 0%;
+    }
+
+    100% {
+        background-position-x: 100%;
+    }
 }
 
 h1 {
     padding: 10px 10px 10px 10px;
     text-align: center;
-    color: #fff;
+    color: #011639;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 10px 10px 10px 10px;
+    background: #f7f8f5;
+    border-radius: 10px;
+    margin: 10px;
+    gap: 10px;
+    padding: 21px;
+    box-shadow: 15px 8px 9px;
 }
 
 label {
     font-size: 1.1em;
-    color: white;
+    color: rgb(0, 0, 0);
     font-weight: bolder;
 }
 
@@ -32,33 +53,45 @@ textarea,
 input[type="file"] {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 2px solid #dddddd2f;
+    box-shadow: 1px 8px 16px;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border: 0.1px solid;
 }
 
+input:focus{
+    border: .1px solid rgb(0, 255, 0);
+    outline: 2px solid green;
+}
 textarea {
     resize: vertical;
 }
 
+textarea:focus{
+    border: .5px solid rgb(0, 255, 0);
+    outline: 2px solid green;
+}
+
 button {
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: mediumaquamarine;
-    color: white;
+    background: linear-gradient(135deg, rgb(2, 51, 13), rgb(3, 175, 80));
+    color: rgb(255, 255, 255);
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.1s;
+    box-shadow: 2px 8px 9px;
 }
 
 button:hover {
-    background-color: green;
+    background: linear-gradient(135deg, rgb(3, 175, 80), rgb(2, 51, 13));
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+button:active {
+    opacity: 0.4;
 }
 
 .content {
