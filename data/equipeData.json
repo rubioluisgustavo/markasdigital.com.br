@@ -1,14 +1,20 @@
-[
-    {
-        "id": 0,
-        "name": "Luis",
-        "role": "Desenvolvedor",
-        "city": "Avaré"
-    },
-    {
-        "id": 1,
-        "name": "Roger",
-        "role": "Dev",
-        "city": "Valinhos"
+{
+    "usuarios": {
+        "1": {
+            "id": 1,
+            "name": "Luis",
+            "role": "Dev",
+            "city": "Avaré",
+            "password": "aa1bf4646de67fd9086cf6c79007026c",
+            "user": "luis.rubio"
+        },
+        "2": {
+            "id": 2,
+            "name": "Roger",
+            "role": "Dev",
+            "city": "Valinhos",
+            "password": "aa1bf4646de67fd9086cf6c79007026c",
+            "user": "roger.robertt"
+        }
     }
-]
+}

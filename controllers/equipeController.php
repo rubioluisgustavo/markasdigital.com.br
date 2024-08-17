@@ -27,6 +27,12 @@ $data = json_decode(file_get_contents($jsonFile), true);
         <label for="link">Cidade:</label>
         <input type="text" value="" name="city" id="title"><br><br>
 
+        <label for="link">Usuário:</label>
+        <input type="text" value="" name="user" id="title"><br><br>
+
+        <label for="link">Senha:</label>
+        <input type="text" value="" name="password" id="title"><br><br>
+
         <button type="submit">Enviar</button>
     </form>
 </body>
