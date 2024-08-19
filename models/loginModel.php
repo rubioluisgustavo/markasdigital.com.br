@@ -22,8 +22,11 @@ class LoginModel
             foreach ($usuarios as $usuario) {
 
                 if ($usuario['user'] == $user && $usuario['password'] == $password) {
+                    session_start();
+                    $_SESSION['userLogged']=1;
                     header("Location: ../admin/painel.php");
                 } else {
+                    $_SESSION['userLogged']=0;
                     header("Location: ../admin/index.php?login=false");
                 }
             }

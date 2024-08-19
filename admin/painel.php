@@ -1,4 +1,8 @@
 <?php
+include("../views/scripts.php");
+if ($_SESSION['userLogged']==1)
+
+
 $jsonFile = '../data/menuData.json';
 $data = json_decode(file_get_contents($jsonFile), true);
 $jsonEquipeFile = '../data/equipeData.json';
