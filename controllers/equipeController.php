@@ -1,40 +1,69 @@
 <?php
 
-$jsonFile = '../data/equipeData.json';
-$data = json_decode(file_get_contents($jsonFile), true);
-// include("../views/header.php");
-?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+if ($_REQUEST['action'] && $_REQUEST['action'] == 'apagar' && $_REQUEST['id'] && $_REQUEST['id'] != null) {
+    $jsonFile = ('../data/equipeData.json');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - equipe</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-</head>
+    if (isset($_GET['id'])) {
+        $idToRemove = (int)$_GET['id'];
+        $jsonData = file_get_contents($jsonFile);
+        $menuItems = json_decode($jsonData, true);
+        $menuItems = $menuItems['usuarios'];
+        $itemFound = false;
 
-<body>
-    <form action="../modules/equipeModule.php" method="post" enctype="multipart/form-data">
-        <h1>Adicionar membro</h1>
-        <label for="title">Nome:</label>
-        <input type="text" value="" name="name" id="title"><br><br>
+        foreach ($menuItems as $key => $item) {
+            if ($item['id'] == $idToRemove) {
+                unset($menuItems[$key]);
+                $itemFound = true;
+                break;
+            }
+        }
 
-        <label for="link">Cargo:</label>
-        <input type="text" value="" name="role" id="title"><br><br>
+        if ($itemFound) {
+            $menuItems = array_values($menuItems);
 
-        <label for="link">Cidade:</label>
-        <input type="text" value="" name="city" id="title"><br><br>
+            $newJsonData = json_encode(['usuarios' => $menuItems], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            if (file_put_contents($jsonFile, $newJsonData)) {
+                header('Location: ../admin/painel.php');
+            } else {
+                echo "Erro ao salvar as alterações.";
+            }
+        } else {
+            echo "Item com ID especificado não encontrado.";
+        }
+    } else {
+        echo "ID do item a ser removido não foi especificado.";
+    }
+}
 
-        <label for="link">Usuário:</label>
-        <input type="text" value="" name="user" id="title"><br><br>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = ($_POST['name']);
+    $role = ($_POST['role']);
+    $city = ($_POST['city']);
+    $user = ($_POST['user']);
+    $password = ($_POST['password']);
 
-        <label for="link">Senha:</label>
-        <input type="text" value="" name="password" id="title"><br><br>
+    $jsonFile = ('../data/equipeData.json');
+    $jsonData = file_get_contents($jsonFile);
+    $menuItems = json_decode($jsonData, true);
+    $nextKey = count($menuItems['usuarios']) + 1;
 
-        <button type="submit">Enviar</button>
-    </form>
-</body>
+    $newItem  = [
+        'id' => $nextKey,
+        'name' => $name,
+        'role' => $role,
+        'city' => $city,
+        'password' => md5($password),
+        'user' => $user
+    ];
 
-</html>
+    $menuItems['usuarios'][$nextKey] = $newItem;
+    $newJsonData = json_encode($menuItems, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+
+    file_put_contents($jsonFile, $newJsonData);
+    header('Location: ../admin/painel.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}

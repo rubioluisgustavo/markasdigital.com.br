@@ -1,45 +1,28 @@
-<?php 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$jsonFile = '../data/propositoData.json';
-$data = json_decode(file_get_contents($jsonFile), true); 
+    $titleBlock1 = ($_POST['titleBlock1']);
+    $contentBlock1 = ($_POST['contentBlock1']);
+    $titleBlock2 = ($_POST['titleBlock2']);
+    $contentBlock2 = ($_POST['contentBlock2']);
+    $titleBlock3 = ($_POST['titleBlock3']);
+    $contentBlock3 = ($_POST['contentBlock3']);
 
-?>
 
+    $data = [
+        'titleBlock1' =>  $titleBlock1,
+        'contentBlock1' => $contentBlock1,
+        'titleBlock2' =>  $titleBlock2,
+        'contentBlock2' => $contentBlock2,
+        'titleBlock3' =>  $titleBlock3,
+        'contentBlock3' => $contentBlock3,
+    ];
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+    $jsonFile = '../data/propositoData.json';
+    file_put_contents($jsonFile, json_encode($data));
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - propósito</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-</head>
-
-<body>
-    <form action="../modules/propositoModule.php" method="post" enctype="multipart/form-data">
-        <h1>Propósito</h1>
-
-        <label for="content">Quadrado 1 - título:</label>
-        <textarea name="titleBlock1" id="content" rows="4" cols="50"><?php echo $data['titleBlock1']; ?></textarea><br><br>
-
-        <label for="content">Quadrado 1 - conteúdo:</label>
-        <textarea name="contentBlock1" id="content" rows="4" cols="50"><?php echo $data['contentBlock1']; ?></textarea><br><br>
-
-        <label for="content">Quadrado 2 - título:</label>
-        <textarea name="titleBlock2" id="content" rows="4" cols="50"><?php echo $data['titleBlock2']; ?></textarea><br><br>
-
-        <label for="content">Quadrado 2 - conteúdo:</label>
-        <textarea name="contentBlock2" id="content" rows="4" cols="50"><?php echo $data['contentBlock2']; ?></textarea><br><br>
-
-        <label for="content">Quadrado 3 - título:</label>
-        <textarea name="titleBlock3" id="content" rows="4" cols="50"><?php echo $data['titleBlock3']; ?></textarea><br><br>
-
-        <label for="content">Quadrado 3 - conteúdo:</label>
-        <textarea name="contentBlock3" id="content" rows="4" cols="50"><?php echo $data['contentBlock3']; ?></textarea><br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-
-</html>
+    header('Location: ../proposito.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}

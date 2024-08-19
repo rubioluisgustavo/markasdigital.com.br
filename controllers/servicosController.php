@@ -1,32 +1,34 @@
-<?php 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $uploadDir = '../uploads/';
 
-$jsonFile = '../data/servicosData.json';
-$data = json_decode(file_get_contents($jsonFile), true); 
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
 
-?>
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+        $uploadFile = $uploadDir . basename($_FILES['image']['name']);
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+            die('Erro ao fazer o upload da imagem.');
+        }
+    } else {
+        die('Nenhuma imagem foi enviada.');
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Serviços</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-</head>
+    $content1 = ($_POST['content1']);
+    $imageName = basename($_FILES['image']['name']);
 
-<body>
-    <form action="../modules/servicosModule.php" method="post" enctype="multipart/form-data">
-        <h1>Serviços</h1>
+    $data = [
+        'content1' => $content1,
+        'image' => $imageName
+    ];
 
-        <label for="content">Conteúdo 1:</label>
-        <textarea required name="content1" id="content1" rows="20" cols="50"><?php echo $data['content1']; ?></textarea><br><br>
+    $jsonFile = '../data/servicosData.json';
+    file_put_contents($jsonFile, json_encode($data));
 
-        <label for="image">Imagem:</label>
-        <input type="file" name="image" id="image" required accept="image/*"><br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-
-</html>
+    header('Location: ../servicos.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}

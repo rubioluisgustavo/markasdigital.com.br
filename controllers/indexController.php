@@ -1,33 +1,30 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $uploadDir = '../uploads/';
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
 
-$jsonFile = '../data/indexData.json';
-$data = json_decode(file_get_contents($jsonFile), true);
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
+        $uploadFile = $uploadDir . basename($_FILES['image']['name']);
 
-?>
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+            die('Erro ao fazer o upload da imagem.');
+        }
+    } else {
+        die('Nenhuma imagem foi enviada.');
+    }
+    $content = ($_POST['content']);
+    $imageName = basename($_FILES['image']['name']);
+    $data = [
+        'content' => $content,
+        'image' => $imageName
+    ];
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - home</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-</head>
-
-<body>
-    <form action="../modules/indexModule.php" method="post" enctype="multipart/form-data">
-        <h1>Home</h1>
-
-        <label for="content">Conteúdo:</label>
-        <textarea name="content" id="content" rows="20" cols="50"><?php echo $data['content']; ?></textarea><br><br>
-
-        <label for="image">Imagem:</label>
-
-        <input value="<?php echo $data['image']; ?>" type="file" name="image" id="image" accept="image/*"><br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-
-</html>
+    $jsonFile = '../data/indexData.json';
+    file_put_contents($jsonFile, json_encode($data));
+    header('Location: ../index.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}

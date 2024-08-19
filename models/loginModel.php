@@ -3,7 +3,7 @@
 class LoginModel
 {
 
-    public function logar($data)
+    public function login($data)
     {
 
         $user = ($data['user']);

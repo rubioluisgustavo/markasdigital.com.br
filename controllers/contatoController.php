@@ -1,41 +1,21 @@
-<?php 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$jsonFile = '../data/contatoData.json';
-$data = json_decode(file_get_contents($jsonFile), true); 
+    $subtitle = ($_POST['subtitle']);
+    $phone = ($_POST['phone']);
+    $email = ($_POST['email']);
 
-?>
+    $data = [
+        'email' => $email,
+        'subtitle' => $subtitle,
+        'phone' => $phone
+    ];
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+    $jsonFile = '../data/contatoData.json';
+    file_put_contents($jsonFile, json_encode($data));
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Contato</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-    <?php include("../views/scripts.php"); ?>
-</head>
-
-<body>
-    <form action="../modules/contatoModule.php" method="post" enctype="multipart/form-data">
-        <h1>Contato</h1>
-        <label for="title">Subtítulo:</label>
-        <input type="text" value="<?php echo $data['subtitle']; ?>" name="subtitle" id="title"><br><br>
-
-        <label for="content">Telefone:</label>
-        <input type="text" value="<?php echo $data['phone']; ?>" name="phone" id="phone" rows="1" cols="50"><br><br>
-
-        <label for="content">E-mail:</label>
-        <textarea name="email" id="content1" rows="1" cols="50"><?php echo $data['email']; ?></textarea><br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-
-</html>
-
-<script>
-    $(document).ready(function(){
-        $('#phone').mask("+00 (00) 00000-0000")
-    })
-</script>
+    header('Location: ../contato.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}

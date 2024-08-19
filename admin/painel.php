@@ -37,7 +37,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">MENUS</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/menuController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/menuView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">EQUIPE</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/equipeController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/equipeView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">HOME</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/indexController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/indexView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">PROPÓSITO</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/propositoController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/propositoView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">SERVIÇOS</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/servicosController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/servicosView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">SOLUÇÕES</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/solucoesController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/solucoesView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">CONTATO</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" target="_blank" href="../controllers/contatoController.php">gerenciar</a>
+                                    <a class="small text-white stretched-link" target="_blank" href="../views/contatoView.php">gerenciar</a>
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             echo '<tr><td>' . $item['name'] . '</td>';
                                             echo '<td>' . $item['role'] . '</td>';
                                             echo '<td>' . $item['city'] . '</td>';
-                                            echo '<td><a href="../modules/equipeModule.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
+                                            echo '<td><a href="../views/equipeView.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
                                         } ?>
                                     </tbody>
                                 </table>
@@ -164,7 +164,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             echo '<tr><td>' . $item['title'] . '</td>';
                                             echo '<td>' . $item['href'] . '</td>';
                                             echo '<td>' . $item['active'] . '</td>';
-                                            echo '<td><a href="../modules/menuModule.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
+                                            echo '<td><a href="../views/menuView.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
                                         } ?>
                                     </tbody>
                                 </table>

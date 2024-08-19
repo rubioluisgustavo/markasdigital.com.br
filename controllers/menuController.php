@@ -1,35 +1,63 @@
 <?php
 
-$jsonFile = '../data/menuData.json';
-$data = json_decode(file_get_contents($jsonFile), true);
-// include("../views/header.php");
-?>
+if ($_REQUEST['action'] && $_REQUEST['action'] == 'apagar' && $_REQUEST['id']) {
+    $jsonFile = ('../data/menuData.json');
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+    if (isset($_GET['id'])) {
+        $idToRemove = (int)$_GET['id'];
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - menus</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-</head>
+        $jsonData = file_get_contents($jsonFile);
 
-<body>
-    <form action="../modules/menuModule.php" method="post" enctype="multipart/form-data">
-        <h1>menus</h1>
+        $menuItems = json_decode($jsonData, true);
 
-        <label for="link">Link:</label>
-        <input type="text" value="" name="href" id="title"><br><br>
+        $itemFound = false;
 
-        <label for="active">Ativo:</label>
-        <select class="form-select" name="active">
-            <option value="sim">sim</option>
-            <option value="não">não</option>
-        </select>
+        foreach ($menuItems as $key => $item) {
+            if ($item['id'] == $idToRemove) {
+                unset($menuItems[$key]);
+                $itemFound = true;
+                break;
+            }
+        }
 
-        <button type="submit">Enviar</button>
-    </form>
-</body>
+        if ($itemFound) {
+            $menuItems = array_values($menuItems);
+            $newJsonData = json_encode($menuItems, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            if (file_put_contents($jsonFile, $newJsonData)) {
+                header('Location: ../admin/index.php');
+            } else {
+                echo "Erro ao salvar as alterações.";
+            }
+        } else {
+            echo "Item com ID especificado não encontrado.";
+        }
+    } else {
+        echo "ID do item a ser removido não foi especificado.";
+    }
+}
 
-</html>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title = ($_POST['title']);
+    $href = ($_POST['href']);
+    $active = ($_POST['active']);
+
+    $jsonFile = ('../data/menuData.json');
+    $jsonData = file_get_contents($jsonFile);
+    $menuItems = json_decode($jsonData, true);
+    $nextKey = count($menuItems);
+    $newItem  = [
+        'id' => $nextKey,
+        'title' => $title,
+        'href' => $href,
+        'active' => $active
+    ];
+
+    $menuItems[] = $newItem;
+    $newJsonData = json_encode($menuItems, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    file_put_contents($jsonFile, $newJsonData);
+
+    header('Location: ../admin/index.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}

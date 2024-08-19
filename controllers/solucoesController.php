@@ -1,29 +1,17 @@
-<?php 
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$jsonFile = '../data/solucoesData.json';
-$data = json_decode(file_get_contents($jsonFile), true); 
+    $content1 = ($_POST['content1']);
 
-?>
+    $data = [
+        'content1' => $content1
+    ];
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+    $jsonFile = '../data/solucoesData.json';
+    file_put_contents($jsonFile, json_encode($data));
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Soluções</title>
-    <link href="../assets/css/adminStyles.css" rel="stylesheet">
-</head>
-
-<body>
-    <form action="../modules/solucoesModule.php" method="post" enctype="multipart/form-data">
-        <h1>Soluções</h1>
-
-        <label for="content">Conteúdo:</label>
-        <textarea name="content1" id="content1" rows="20" cols="50"><?php echo $data['content1']; ?></textarea><br><br>
-
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-
-</html>
+    header('Location: ../solucoes.php');
+    exit;
+} else {
+    echo 'Método de requisição inválido.';
+}
