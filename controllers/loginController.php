@@ -9,13 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if ($user && $password) {
-        $return = $model->login(['user' => $user, 'password' => $password]);
-        if ($return) {
-            header("Location: ../admin/painel.php?login=true");
-            exit();
-        } else {
-            header("Location: ../admin/index.php?login=false");
-            exit();
-        }
+        $model->login(['user' => $user, 'password' => $password]);
     }
 }

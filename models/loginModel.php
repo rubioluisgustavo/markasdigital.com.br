@@ -22,13 +22,11 @@ class LoginModel
             foreach ($usuarios as $usuario) {
 
                 if ($usuario['user'] == $user && $usuario['password'] == $password) {
-                    return true;
+                    header("Location: ../admin/painel.php?login=true");
                 } else {
-                    $return = false;
+                    header("Location: ../admin/index.php?login=false");
                 }
             }
-
-            return $return;
         } else {
             echo "Erro ao ler o arquivo JSON.";
         }
