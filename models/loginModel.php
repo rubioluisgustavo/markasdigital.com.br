@@ -22,7 +22,7 @@ class LoginModel
             foreach ($usuarios as $usuario) {
 
                 if ($usuario['user'] == $user && $usuario['password'] == $password) {
-                    header("Location: ../admin/painel.php?login=true");
+                    header("Location: ../admin/painel.php");
                 } else {
                     header("Location: ../admin/index.php?login=false");
                 }

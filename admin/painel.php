@@ -191,19 +191,3 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
 </body>
 
 </html>
-
-<?php
-
-if ($_REQUEST['login'] == 'true') {
-?> <script>
-        $(document).ready(function() {
-            Swal.fire({
-                title: "Oba!",
-                text: "Seu login foi efetuado!",
-                icon: "success"
-            });
-        })
-    </script><?php
-            }
-
-                ?>
