@@ -198,8 +198,8 @@ if ($_REQUEST['login'] == 'true') {
 ?> <script>
         $(document).ready(function() {
             Swal.fire({
-                title: "Good job!",
-                text: "You clicked the button!",
+                title: "Oba!",
+                text: "Seu login foi efetuado!",
                 icon: "success"
             });
         })

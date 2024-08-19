@@ -23,7 +23,7 @@ $data = json_decode(file_get_contents($jsonFile), true);
         <input required type="text" name="user"><br><br>
 
         <label for="content">senha:</label>
-        <input required type="text" name="password"><br><br>
+        <input required type="password" name="password"><br><br>
 
         <button type="submit">logar</button>
     </form>
