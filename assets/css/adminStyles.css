@@ -50,6 +50,7 @@ label {
 }
 
 input[type="text"],
+select,
 textarea,
 input[type="file"] {
     padding: 10px;
