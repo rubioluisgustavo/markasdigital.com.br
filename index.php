@@ -31,7 +31,7 @@ $dataMenu = json_decode(file_get_contents($jsonFileMenu), true);
                     <div class="row">
                         <div class="col-md-6">
                             <?php echo $data['content']; ?>
-                        </div> 
+                        </div>
                         <div class="col-md-6 text-center">
                             <?php $imagePath = './uploads/' . ($data['image']);
                             echo '<img src="' . ($imagePath) . '" alt="Imagem enviada" style="width: 30%;">'; ?>

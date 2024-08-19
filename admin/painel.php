@@ -33,7 +33,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                         <li class="breadcrumb-item active">bem-vindo, visitante</li>
                     </ol>
                     <div class="row">
-                        <div class="col-2">
+                        <!-- <div class="col-2">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">MENUS</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
@@ -41,8 +41,8 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-2">
+                        </div> -->
+                        <!-- <div class="col-2">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">EQUIPE</div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
@@ -50,7 +50,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
                         <div class="col-2">
@@ -111,7 +111,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             <th>Nome</th>
                                             <th>Cargo</th>
                                             <th>Cidade</th>
-                                            <th>Apagar</th>
+                                            <!-- <th>Apagar</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -119,7 +119,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             <th>Nome</th>
                                             <th>Cargo</th>
                                             <th>Cidade</th>
-                                            <th>Apagar</th>
+                                            <!-- <th>Apagar</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -128,7 +128,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             echo '<tr><td>' . $item['name'] . '</td>';
                                             echo '<td>' . $item['role'] . '</td>';
                                             echo '<td>' . $item['city'] . '</td>';
-                                            echo '<td><a href="../views/equipeView.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
+                                            // echo '<td><a href="../views/equipeView.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
                                         } ?>
                                     </tbody>
                                 </table>
@@ -148,7 +148,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             <th>Título</th>
                                             <th>Link</th>
                                             <th>Ativo</th>
-                                            <th>Apagar</th>
+                                            <!-- <th>Apagar</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -156,7 +156,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             <th>Título</th>
                                             <th>Link</th>
                                             <th>Ativo</th>
-                                            <th>Apagar</th>
+                                            <!-- <th>Apagar</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -164,7 +164,7 @@ $dataEquipe = json_decode(file_get_contents($jsonEquipeFile), true);
                                             echo '<tr><td>' . $item['title'] . '</td>';
                                             echo '<td>' . $item['href'] . '</td>';
                                             echo '<td>' . $item['active'] . '</td>';
-                                            echo '<td><a href="../views/menuView.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
+                                            // echo '<td><a href="../views/menuView.php?action=apagar&id=' . $item['id'] . '">apagar</a></td> </tr>';
                                         } ?>
                                     </tbody>
                                 </table>
